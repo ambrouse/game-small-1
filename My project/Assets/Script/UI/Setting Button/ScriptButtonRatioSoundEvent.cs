@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class SettingRatioButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
+public class ScriptButtonRatioSoundEvent : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
 {
-    public RectTransform handle; // đối tượng mà chuột sẽ tác động tới (nút ratio(handle)).
-    public RectTransform bar; // thanh slide dùng để đo phần trăm của ratio.
+    [SerializeField] private RectTransform handle; // đối tượng mà chuột sẽ tác động tới (nút ratio(handle)).
+    [SerializeField] private RectTransform bar; // thanh slide dùng để đo phần trăm của ratio.
     private bool dragging = false; // biến xác định trạng thái của mouse mouse (true: dang duoc nhap, false: khi đang thả chuột).
 
     public void OnPointerDown(PointerEventData eventData)
@@ -64,5 +64,6 @@ public class SettingRatioButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
         float ratio = Mathf.Round((localPos.x + halfWidth) / bar.rect.width * 10f)/10;
         Debug.Log($"Volume: {ratio}");
+        
     }
 }
