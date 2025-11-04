@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScriptButtonEvent : MonoBehaviour
+public class ScriptEventManagerMenu : MonoBehaviour
 {
     [SerializeField] private Button buttonPlay; // nút bắt sự kiện khi bắt đầu trò chơi
     [SerializeField] private Button buttonQuit; // nút bắt sự kiện khi thoát trò chơi
@@ -31,7 +32,13 @@ public class ScriptButtonEvent : MonoBehaviour
 
     private void OnclickButtonQuit()
     {
-        Debug.Log("Button Quit clicked!");
+        /*
+            Hàm xử lý khi quit game
+        */
+
+
+        Application.Quit(); // hàm chạy khi app đã build
+        EditorApplication.isPlaying = false; //hàm chạy khi edit
     }
 
 
@@ -61,14 +68,16 @@ public class ScriptButtonEvent : MonoBehaviour
             Hàm fake load scene để test các màn hình loading.
         */
 
-
+        AsyncOperation op = SceneManager.LoadSceneAsync("SceneMapMenu");
+        op.allowSceneActivation = false;
         float progress = 0f;
         while (progress < 1f)
         {
-            progress += Time.deltaTime * 1f; // 5s đầy
+            progress += Time.deltaTime * 1f; // 1s đầy
             Debug.Log("Fake Progress: " + progress + "___" + Time.deltaTime);
             yield return null;
         }
+        op.allowSceneActivation = true;
 
 
     }

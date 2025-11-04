@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScriptButtonRatioSoundVfxEvent : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
+public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
 {
     [SerializeField] private RectTransform handle; // đối tượng mà chuột sẽ tác động tới (nút ratio(handle)).
     [SerializeField] private RectTransform bar; // thanh slide dùng để đo phần trăm của ratio.
