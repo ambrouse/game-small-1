@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
+
+public class EventButtonRatioSound : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler // ke thua lai cac interface thiet ke san de bat su kien chuot cho UI
 {
     [SerializeField] private RectTransform handle; // đối tượng mà chuột sẽ tác động tới (nút ratio(handle)).
     [SerializeField] private RectTransform bar; // thanh slide dùng để đo phần trăm của ratio.
@@ -10,7 +11,7 @@ public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         /*
-            Hàm bắt sự kiện khi chuột được nhấn
+            Hàm bắt sự kiện khi chuột được nhấn:
                 - thay đổi trạng thái biến trạng thái.
                 - gọi hàm cập nhật lại vịt trí của handle.
         */
@@ -23,7 +24,7 @@ public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         /*
-            Hàm bắt sự kiện khi chuột được nhã
+            Hàm bắt sự kiện khi chuột được nhả:
                 - thay đổi trạng thái biến trạng thái.
         */
 
@@ -34,7 +35,7 @@ public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler
     public void OnDrag(PointerEventData eventData)
     {
         /*
-            Hàm bắt sự kiện khi chuột được kéo
+            Hàm bắt sự kiện khi chuột được kéo:
                 - gọi hàm để liên tục cập nhật lại vịt trí của handle(nút ratio).
         */
 
@@ -46,7 +47,7 @@ public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler
     private void UpdateHandle(PointerEventData eventData)
     {
         /*
-            Hàm cập nhật lại ví trí của handle(nút ratio)
+            Hàm cập nhật lại ví trí của handle(nút ratio):
                 - tính toán lại vị trí của handle bằng cách chuyển đổi vị trí của mouse sang tọa độ của rectranform.
                 - tính toán ratio bằng cách chia tỉ lệ của vị trí của handle hiện tại so với slide (0-1)
         */
@@ -62,6 +63,7 @@ public class ScriptEventButtonRatioSoundVfx : MonoBehaviour, IPointerDownHandler
         handle.localPosition = localPos;
 
         float ratio = Mathf.Round((localPos.x + halfWidth) / bar.rect.width * 10f)/10;
-        Debug.Log($"Volume sound vfx: {ratio}");
+        Debug.Log($"Volume: {ratio}");
+        
     }
 }
