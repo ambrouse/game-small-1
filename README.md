@@ -60,7 +60,7 @@ My project/
 - git clone https://github.com/ambrouse/game-small-1.git
 
 ### 2️⃣ Mở bằng Unity
-- Phiên bản khuyến nghị: Unity 2021.3 LTS (hoặc ghi rõ phiên bản bạn đang dùng)
+- Phiên bản: Unity Editor version 6000.0.26f1 LTS (Unity 6)
 - Mở thư mục chứa project bằng Unity Hub → Add Project
 
 ### 3️⃣ Cài đặt package

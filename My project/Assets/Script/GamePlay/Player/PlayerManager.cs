@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        this.speedPlayer = 2;
+        this.speedPlayer = 0f;
     }
 
 

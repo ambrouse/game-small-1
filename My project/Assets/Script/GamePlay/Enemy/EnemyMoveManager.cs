@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyMoveManager : MonoBehaviour
 {
-    [SerializeField] private Transform[] enemyObject; //Danh sách quái.
-    [SerializeField] private PlayerManager playerManager; //Class quản chung của player (chứa các thông tin cơ bản của player).
     [SerializeField] private EnemyManager enemyManager; //Class chứa các thông tin cơ bản của quái.
     
 
@@ -21,11 +19,11 @@ public class EnemyMoveManager : MonoBehaviour
         */
 
 
-        foreach (var item in enemyObject)
+        foreach (var item in enemyManager.Enemys)
         {
             item.transform.position = Vector3.MoveTowards(
                 item.transform.position,
-                playerManager.playerPos,
+                enemyManager.playerManager.playerPos,
                 enemyManager.speedEnemy * Time.deltaTime
             );
         }
