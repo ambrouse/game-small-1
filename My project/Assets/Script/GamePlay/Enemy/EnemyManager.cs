@@ -2,20 +2,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
-{
-    [SerializeField] public float speedEnemy; //Tốc độ của quái.
-    [SerializeField] public PlayerManager playerManager; //Class quản chung của player (chứa các thông tin cơ bản của player).
-    [SerializeField] public List<GameObject> Enemys; // Chứa danh sách quái.
-    [SerializeField] public GameObject EnemyRefab; //Refab của quái.
+{   
+    [field: SerializeField] public GameObject enemyRefab { get; private set; } //Refab của quái.
+    public List<GameObject> enemys { get; set; } = new(); // Chứa danh sách quái.
+    public LayerMask layerMaskEnemy { get; private set; } //Layer của quái.
     
-    
-    void Start()
+    public float speedEnemy{ get; private set; } //Tốc độ của quái.
+    public float dameEnemy{ get; private set; } //Sat thuong cua quai.
+
+
+    void Awake()
     {
-        this.speedEnemy = 1.5f;
+        ServiceManager.Register<EnemyManager>(this); // Đăng ký service với ServiceManager.
     }
 
 
-    void Update()
+    void Start()
     {
+        this.speedEnemy = 1.5f;
+        this.dameEnemy = 20;
+        this.layerMaskEnemy = LayerMask.GetMask("Enemy");
+
     }
 }

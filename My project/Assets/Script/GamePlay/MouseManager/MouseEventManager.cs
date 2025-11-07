@@ -3,7 +3,15 @@ using UnityEngine;
 public class MouseEventManager : MonoBehaviour
 {
 
-    public Vector3 mousePos; //Biến chứa thông tin vị trí của trỏ chuột
+    [SerializeField] private Vector3 mousePos; //Biến chứa thông tin vị trí của trỏ chuột.
+
+    public Vector3 MousePos { get; private set; }
+
+
+    void Awake()
+    {
+        ServiceManager.Register<MouseEventManager>(this); //Đăng ký service với service manager.
+    }
 
 
     void Update()
@@ -16,7 +24,7 @@ public class MouseEventManager : MonoBehaviour
     {
         /*
             Hàm theo dõi vị trí của chuột:
-                - Theo dõi và chuyển vị trí của chuột thành gameplay thay vì UI 
+                - Theo dõi và chuyển vị trí của chuột thành gameplay thay vì UI.
         */
 
 

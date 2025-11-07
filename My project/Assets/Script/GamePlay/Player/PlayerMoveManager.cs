@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class PlayerMoveManager : MonoBehaviour
 {
-    [SerializeField] private MouseEventManager mouseEventManager; //Class quản lý các thông số và sự kiên chung của chuột 
-    [SerializeField] private PlayerManager playerManager; //Class quản chung của player (chứa các thông tin cơ bản của player)
-
-
     void Update()
     {
-        moveMouse();
+        MoveMouse();
     }
 
-    public void moveMouse()
+    public void MoveMouse()
     {
         /*
             Hàm di chuyển theo vị trí chuột:
@@ -19,10 +15,10 @@ public class PlayerMoveManager : MonoBehaviour
         */
 
 
-        transform.position = Vector3.MoveTowards(
+        ServiceManager.Get<PlayerManager>().playerTransform.transform.position = Vector3.MoveTowards(
             transform.position,
-            mouseEventManager.mousePos,
-            playerManager.speedPlayer * Time.deltaTime
+            ServiceManager.Get<MouseEventManager>().MousePos, //Trỏ tới Class MouseEventManager trong serviceManager.
+            ServiceManager.Get<PlayerManager>().speedPlayer * Time.deltaTime //Trỏ tới class PlayerManager trong serviceManager.
         );
 
     }

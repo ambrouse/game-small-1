@@ -1,17 +1,15 @@
 using UnityEngine;
 
 public class EnemyMoveManager : MonoBehaviour
-{
-    [SerializeField] private EnemyManager enemyManager; //Class chứa các thông tin cơ bản của quái.
-    
+{   
 
     void Update()
     {
-        moveMouse();
+        EnemyMove();
     }
     
 
-    private void moveMouse()
+    private void EnemyMove()
     {
         /*
             Hàm di chuyển theo vị player:
@@ -19,12 +17,15 @@ public class EnemyMoveManager : MonoBehaviour
         */
 
 
-        foreach (var item in enemyManager.Enemys)
+        if (ServiceManager.Get<EnemyManager>().enemys == null)
+            return;
+
+        foreach (var item in ServiceManager.Get<EnemyManager>().enemys)
         {
             item.transform.position = Vector3.MoveTowards(
                 item.transform.position,
-                enemyManager.playerManager.playerPos,
-                enemyManager.speedEnemy * Time.deltaTime
+                ServiceManager.Get<PlayerManager>().playerPos,
+                ServiceManager.Get<EnemyManager>().speedEnemy * Time.deltaTime
             );
         }
 
