@@ -3,9 +3,9 @@ using UnityEngine;
 public class MouseEventManager : MonoBehaviour
 {
 
-    [SerializeField] private Vector3 mousePos; //Biến chứa thông tin vị trí của trỏ chuột.
+    public Vector3 mousePos; //Biến chứa thông tin vị trí của trỏ chuột.
 
-    public Vector3 MousePos { get; private set; }
+    // public Vector3 MousePos { get; private set; }
 
 
     void Awake()
